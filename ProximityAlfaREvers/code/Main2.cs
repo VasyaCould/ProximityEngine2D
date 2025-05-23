@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 
 
 namespace engine
@@ -19,17 +20,26 @@ namespace engine
             // Console.WriteLine(new Bitmap("p21.png").GetPixel(1, 1).);
             // Out
             // if ()(var input = System.IO.File.OpenRead(path))
+            /*cd ProximityAlfaREvers
+            cd code
+            dotnet run*/
             // using (var bitmap = SKBitmap.Decode(input)
             // OutputWindow.img = new PixArray("p21.png", true);
 
         }
         protected static void Start()
         {
-            PixArray png = new("k.png");
-            png.show();
+            // PixArray png = new("k.png");
+            // png.show();
             // 
 
             // img.show();XZ
+            GameObject i = new("gmObj", "p1.png", new Vector2(0, 0), 0);
+            Console.WriteLine(CurScene.gameObjectsOnScene[0]);
+            // PixArray b = new("p21.png");
+            // b.show();
+            // // PixArray a = new("p1.png");
+            // // a.show();
         }
     }
 }

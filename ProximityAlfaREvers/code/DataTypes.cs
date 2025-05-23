@@ -164,6 +164,8 @@ namespace engine
                 img[j + 3] = a;
             }
         }
+
+        [Obsolete("Этот метод устарел. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт")]
         public void show(Vector2int? pos = null, float? rotation = null)
         {
             pos = pos ?? new Vector2int(0, 0);
