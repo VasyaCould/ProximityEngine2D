@@ -354,7 +354,7 @@ namespace engine
     // components
     public class GameComponents
     {
-        public class RigidPhysical
+        public class RigidPhysics
         {
             public bool enabled;
             public class F
@@ -363,6 +363,10 @@ namespace engine
                 public float strenghtN;
                 public float rotationStrenghtN;
             }
+        }
+        public class ColliderLayer
+        {
+            public int layer = 0;
         }
         public class EdgeCollider
         {
@@ -375,7 +379,7 @@ namespace engine
             public Vector2 relPos = new Vector2(0, 0);// rel relative
             public float diameter;
         }
-        public class PixelColider
+        public class PixelCollider
         {
             
         }
