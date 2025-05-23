@@ -81,6 +81,7 @@ namespace engine
             this.position = position ?? new Vector2(0, 0);
             this.rotation = rotation ?? 0;
             this.gameComponents = gameComponents ?? new GameComponents();
+            CurScene.gameObjectsOnScene.Add(this);
         }
     }
     public class PixArray

@@ -25,8 +25,8 @@ namespace engine
         }
         protected static void Start()
         {
-            PixArray i = new("k.png");
-            i.show();
+            PixArray png = new("k.png");
+            png.show();
             // 
 
             // img.show();XZ

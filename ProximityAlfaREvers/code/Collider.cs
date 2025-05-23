@@ -1,6 +1,5 @@
 using System;
 
-
 namespace engine
 {
     public static class Collider
@@ -10,6 +9,7 @@ namespace engine
             foreach (GameObject i in gameObjects)
             {
                 // collision check by layer
+                // do it after physics
             }
         }
     }
