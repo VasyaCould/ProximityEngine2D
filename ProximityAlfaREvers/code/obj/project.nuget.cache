@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "h/J86B03YwE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Vasya\\.nuget\\packages\\skiasharp\\3.119.0\\skiasharp.3.119.0.nupkg.sha512",
+    "C:\\Users\\Vasya\\.nuget\\packages\\skiasharp.nativeassets.macos\\3.119.0\\skiasharp.nativeassets.macos.3.119.0.nupkg.sha512",
+    "C:\\Users\\Vasya\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.119.0\\skiasharp.nativeassets.win32.3.119.0.nupkg.sha512"
+  ],
+  "logs": []
+}
