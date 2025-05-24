@@ -12,12 +12,20 @@ namespace engine
         public static string? windowName;
         // static WndProcDelegate wndProc = WndProc;
 
-        delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        // delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         // static IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         // {
         //     return DefWindowProc(hWnd, msg, wParam, lParam);//чат gpt
         // }
+        static WndProcDelegate wndProc = WndProc;
+
+        delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        static IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
+        {
+            return DefWindowProc(hWnd, msg, wParam, lParam);//чат gpt
+        }
         public const int Width = 1920;
         public const int Height = 1080;
 
@@ -26,7 +34,7 @@ namespace engine
         static IntPtr memDC;
         static IntPtr dib;
         static IntPtr old;
-        public delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        // public delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         public static PixArray img = new(Width, Height, false);
         // public static PixArray img = new("k.png");
@@ -35,6 +43,7 @@ namespace engine
 
         static void Main()
         {
+
             MainGameClass.Start();
             Directory.SetCurrentDirectory(AppContext.BaseDirectory);
             CreateWindowAndBuffer();
@@ -50,7 +59,11 @@ namespace engine
                 {
                     TranslateMessage(ref msg);
                     DispatchMessage(ref msg);
-                    if (msg.message == 0x0012) return; // WM_QUIT
+                    if (msg.message == 0x0012)
+                    {
+                        PostQuitMessage(0);
+                        return; // WM_QUIT
+                    }
                 }
 
                 sw.Restart();
@@ -74,7 +87,8 @@ namespace engine
 
             WNDCLASS wc = new WNDCLASS
             {
-                lpfnWndProc = Marshal.GetFunctionPointerForDelegate((WndProc)WndProcImpl),
+                // lpfnWndProc = Marshal.GetFunctionPointerForDelegate((WndProc)WndProcImpl),
+                lpfnWndProc = Marshal.GetFunctionPointerForDelegate(wndProc),
                 hInstance = GetModuleHandle(null),
                 lpszClassName = className
             };
@@ -98,28 +112,6 @@ namespace engine
             dib = CreateDIBSection(memDC, ref bmi, 0, out bits, IntPtr.Zero, 0);
             old = SelectObject(memDC, dib);
         }
-        static IntPtr WndProcImpl(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
-        {
-            switch (msg)
-            {
-                case 0x0100: // WM_KEYDOWN
-                    int vk = wParam.ToInt32();
-                    Console.WriteLine($"Key down: {vk}");
-                    if (vk == 0x1B) PostQuitMessage(0); // ESC — выход
-                    break;
-
-                case 0x0201: // WM_LBUTTONDOWN
-                    int x = lParam.ToInt32() & 0xFFFF;
-                    int y = (lParam.ToInt32() >> 16) & 0xFFFF;
-                    Console.WriteLine($"Mouse click at: {x}, {y}");
-                    break;
-
-                case 0x0010: // WM_CLOSE
-                    PostQuitMessage(0);
-                    break;
-            }
-
-            return DefWindowProc(hWnd, msg, wParam, lParam);
-}
+    
     }
 }

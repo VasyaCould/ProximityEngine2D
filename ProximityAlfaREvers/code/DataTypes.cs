@@ -95,7 +95,7 @@ namespace engine
         public int Width;
         public int Height;
 
-        public PixArray(){}
+        public PixArray() { }
         public PixArray(int Width, int Height, bool rgba)
         {
             img = new byte[Width * Height * (rgba ? 4 : 3)];
@@ -234,7 +234,7 @@ namespace engine
         {
             try
             {
-                return new Color (
+                return new Color(
                     img[GetIndexR(x, y)],
                     img[GetIndexG(x, y)],
                     img[GetIndexB(x, y)],
@@ -371,14 +371,10 @@ namespace engine
                 public float rotationStrenghtN;
             }
         }
-<<<<<<< Updated upstream
         public class ColliderLayer
         {
             public int layer = 0;
         }
-=======
-        public class ColliderLayer;
->>>>>>> Stashed changes
         public class EdgeCollider
         {
             public bool enabled;
@@ -392,7 +388,7 @@ namespace engine
         }
         public class PixelCollider
         {
-            
+
         }
         //class RectCollider
         //{
@@ -400,4 +396,5 @@ namespace engine
         //    public 
         //}
     }
+    
 }

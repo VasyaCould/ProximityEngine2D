@@ -21,8 +21,9 @@ namespace engine
         }
         protected static void Update()
         {
+            Console.WriteLine(Input.IsPressed(Keys.A));
             // Bitmap 
-            // // Console.WriteLine(dst[0].r);
+            // // Console.WriteLine(dst[0].r);aaaaaaaa
             // for (int x = 1; x < OutputWindow.Width && x < image.Width; x++)
             // {
             //     for (int y = 1; y < OutputWindow.Height && y < image.Height; y++)
