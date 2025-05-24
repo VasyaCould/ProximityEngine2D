@@ -7,11 +7,17 @@ namespace engine
     {
         protected static void Start()
         {
-            PixArray i = new("k.png");
-            i.show();
+            // PixArray png = new("k.png");
+            // png.show();
             // 
 
             // img.show();XZ
+            GameObject i = new("gmObj", "p1.png", new Vector2(0, 0), 0);
+            Console.WriteLine(CurScene.gameObjectsOnScene[0].programName);
+            // PixArray b = new("p21.png");
+            // b.show();
+            // // PixArray a = new("p1.png");
+            // // a.show();
         }
         protected static void Update()
         {
@@ -34,22 +40,5 @@ namespace engine
             // OutputWindow.img = new PixArray("p21.png", true);
 
         }
-<<<<<<< Updated upstream
-        protected static void Start()
-        {
-            // PixArray png = new("k.png");
-            // png.show();
-            // 
-
-            // img.show();XZ
-            GameObject i = new("gmObj", "p1.png", new Vector2(0, 0), 0);
-            Console.WriteLine(CurScene.gameObjectsOnScene[0].programName);
-            // PixArray b = new("p21.png");
-            // b.show();
-            // // PixArray a = new("p1.png");
-            // // a.show();
-        }
-=======
->>>>>>> Stashed changes
     }
 }
