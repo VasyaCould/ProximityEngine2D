@@ -50,12 +50,13 @@ namespace engine
     }
     public class GameObject
     {
-        string programName, imgDirectory;
-        PixArray img;
-        Vector2 position;
-        float rotation;
-        GameComponents gameComponents;
-        float scale;
+        public string programName, imgDirectory;
+        public PixArray img;
+        public short printLayer;
+        public Vector2 position;
+        public float rotation;
+        public GameComponents gameComponents;
+        public float scale;
         public GameObject(
             string programName,
             string? imgDirection = null,
@@ -63,13 +64,15 @@ namespace engine
             float? rotation = null,
             GameComponents? gameComponents = null,
             PixArray? img = null,
-            float scale = 0
+            float scale = 0,
+            short printLayer = 0
 
             )
         {
             this.programName = programName;
             this.imgDirectory = imgDirection ?? "";
             this.scale = scale;
+            this.printLayer = printLayer;
             if (!string.IsNullOrWhiteSpace(imgDirection))
             {
                 img = new PixArray(imgDirection);
@@ -82,6 +85,7 @@ namespace engine
             this.rotation = rotation ?? 0;
             this.gameComponents = gameComponents ?? new GameComponents();
             CurScene.gameObjectsOnScene.Add(this);
+            CurScene.exsistingLayers.Add(this.printLayer);
         }
     }
     public class PixArray

@@ -1,5 +1,4 @@
-using System;
-using System.Runtime.InteropServices;
+using System;   
 
 
 namespace engine
@@ -35,7 +34,7 @@ namespace engine
 
             // img.show();XZ
             GameObject i = new("gmObj", "p1.png", new Vector2(0, 0), 0);
-            Console.WriteLine(CurScene.gameObjectsOnScene[0]);
+            Console.WriteLine(CurScene.gameObjectsOnScene[0].programName);
             // PixArray b = new("p21.png");
             // b.show();
             // // PixArray a = new("p1.png");
