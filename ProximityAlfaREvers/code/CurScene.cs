@@ -10,7 +10,7 @@ namespace engine
         {
             foreach (GameObject i in gameObjectsOnScene)
             {
-                gameObjectsOnScene.FirstOrDefault(x => x.printLayer == 0);
+                gameObjectsOnScene.FirstOrDefault(x => x.printLayer == 0);//hkjfhkjesdhkgjhjlglkjslkjsdflkgjlkdsjglkfjsdl
             }
         }
     }
