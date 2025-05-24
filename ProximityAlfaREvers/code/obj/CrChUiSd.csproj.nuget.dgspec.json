@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj": {}
+    "C:\\Users\\D205.DELFA\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj": {
+    "C:\\Users\\D205.DELFA\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
+        "projectUniqueName": "C:\\Users\\D205.DELFA\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
         "projectName": "CrChUiSd",
-        "projectPath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
-        "packagesPath": "C:\\Users\\Vasya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\obj\\",
+        "projectPath": "C:\\Users\\D205.DELFA\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
+        "packagesPath": "C:\\Users\\D205.DELFA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\D205.DELFA\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vasya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\D205.DELFA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
