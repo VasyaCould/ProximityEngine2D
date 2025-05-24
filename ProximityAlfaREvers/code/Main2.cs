@@ -5,6 +5,14 @@ namespace engine
 {
     class MainGameClass
     {
+        protected static void Start()
+        {
+            PixArray i = new("k.png");
+            i.show();
+            // 
+
+            // img.show();XZ
+        }
         protected static void Update()
         {
             // Bitmap 
@@ -26,6 +34,7 @@ namespace engine
             // OutputWindow.img = new PixArray("p21.png", true);
 
         }
+<<<<<<< Updated upstream
         protected static void Start()
         {
             // PixArray png = new("k.png");
@@ -40,5 +49,7 @@ namespace engine
             // // PixArray a = new("p1.png");
             // // a.show();
         }
+=======
+>>>>>>> Stashed changes
     }
 }

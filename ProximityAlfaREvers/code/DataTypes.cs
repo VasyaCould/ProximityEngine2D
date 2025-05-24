@@ -371,10 +371,14 @@ namespace engine
                 public float rotationStrenghtN;
             }
         }
+<<<<<<< Updated upstream
         public class ColliderLayer
         {
             public int layer = 0;
         }
+=======
+        public class ColliderLayer;
+>>>>>>> Stashed changes
         public class EdgeCollider
         {
             public bool enabled;

@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CrChUiSd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+483afd2c739b948b30f983d49fe5e7021f04b792")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+060c62dc90c6d0bdcc6620539713b78004f4980e")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("CrChUiSd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrChUiSd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
