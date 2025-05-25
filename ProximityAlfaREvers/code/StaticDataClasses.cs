@@ -23,19 +23,19 @@ namespace engine
             public int y;
         }
 
-        public static Vector2Int GetMousePosAbs()
+        public static Vector2int GetMousePosAbs()
         {
             GetCursorPos(out Point p);
-            return new Vector2Int(p.x, p.y);
+            return new Vector2int(p.x, p.y);
         }
         [DllImport("user32.dll")]
         static extern bool ScreenToClient(IntPtr hWnd, ref Point lpPoint);
 
-        public static Vector2Int GetMousePosRel()
+        public static Vector2int GetMousePosRel()
         {
             GetCursorPos(out Point point);
             ScreenToClient(OutputWindow.hwnd, ref point);
-            return new Vector2Int(point.x, point.y);
+            return new Vector2int(point.x, point.y);
         }
     }
 }

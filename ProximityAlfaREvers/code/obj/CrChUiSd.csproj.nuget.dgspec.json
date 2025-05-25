@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj": {}
+    "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\proximityalfarevers\\code\\CrChUiSd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj": {
+    "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\proximityalfarevers\\code\\CrChUiSd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
+        "projectUniqueName": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\proximityalfarevers\\code\\CrChUiSd.csproj",
         "projectName": "CrChUiSd",
-        "projectPath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\CrChUiSd.csproj",
+        "projectPath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\proximityalfarevers\\code\\CrChUiSd.csproj",
         "packagesPath": "C:\\Users\\Vasya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\ProximityAlfaREvers\\code\\obj\\",
+        "outputPath": "C:\\Users\\Vasya\\Documents\\GitHub\\ProximityEngine2D\\proximityalfarevers\\code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

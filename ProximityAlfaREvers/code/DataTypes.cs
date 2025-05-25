@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata;
 using SkiaSharp;
 
 namespace engine
@@ -28,21 +29,6 @@ namespace engine
             this.y = y;
         }
         public Vector2int()
-        {
-            this.y = 0;
-            this.x = 0;
-        }
-    }
-    public class Vector2Int
-    {
-        public int x;
-        public int y;
-        public Vector2Int(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-        public Vector2Int()
         {
             this.y = 0;
             this.x = 0;
@@ -130,14 +116,15 @@ namespace engine
         }
 
         [Obsolete("Этот метод устарел. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт")]
-        public void show(Vector2int? pos = null, float? rotation = null)
+        public void show(Vector2int? pos = null, float? rotation = null, bool? fill = null)
         {
+            if(fill == true) Array.Fill<byte>(OutputWindow.img.img, 255);
             pos = pos ?? new Vector2int(0, 0);
             for (int x = 1; x + pos.x < OutputWindow.Width && x < this.Width; x++)
             {
                 for (int y = 1; y + pos.y < OutputWindow.Height && y < this.Height; y++)
                 {
-                    OutputWindow.img.SetPixel(x + pos.x, y + pos.y, this.GetPixel(x, y));
+                    if(x + pos.x > 0 && y + pos.y > 0) OutputWindow.img.SetPixel(x + pos.x, y + pos.y, this.GetPixel(x, y));
                 }
             }
         }

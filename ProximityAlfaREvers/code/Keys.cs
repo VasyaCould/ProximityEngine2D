@@ -72,9 +72,9 @@ public enum Keys
     F12 = 0x7B,
 
     // Клавиши мыши (используются в сообщениях WM_LBUTTONDOWN и т.п.)
-    LBUTTON = 0x01,
-    RBUTTON = 0x02,
-    MBUTTON = 0x04,
+    MouseL = 0x01,
+    MouseR = 0x02,
+    MouseM = 0x04,
     XBUTTON1 = 0x05,
     XBUTTON2 = 0x06,
 

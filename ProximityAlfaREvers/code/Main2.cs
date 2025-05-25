@@ -46,12 +46,28 @@ namespace engine
             }
             Console.WriteLine("To change settings or pic press q (on window)\nTo draw hold left mouse button\nTo move pic hold right mouse button");
         }
+        private static Vector2int mapPos = new();
+        private static Vector2int LastMousePos = new();
+        private static bool firstClick = true;
         public static void Update()
         {
             if (Input.IsPressed(Keys.Q))
             {
                 Settings();
             }
+            if (Input.IsPressed(Keys.MouseL))
+            {
+                if (firstClick)
+                {
+                    LastMousePos = new(Input.GetMousePosRel().x, Input.GetMousePosRel().y);
+                    firstClick = false;
+                }
+                mapPos = new(Input.GetMousePosRel().x - LastMousePos.x + mapPos.x, Input.GetMousePosRel().y - LastMousePos.y + mapPos.y);
+                LastMousePos = new(Input.GetMousePosRel().x, Input.GetMousePosRel().y);
+            }
+            else firstClick = true;
+
+            pic.show(mapPos, fill: true);
         }
         public static void Settings()
         {
