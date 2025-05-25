@@ -7,8 +7,10 @@ using static Win32;
 
 namespace engine
 {
-    class OutputWindow : MainGameClass
+    static class OutputWindow// chat gpt
     {
+        public static bool scaleForbiden = true;
+        public static bool fullScreen = false;
         public static string? windowName;
         // static WndProcDelegate wndProc = WndProc;
 
@@ -29,7 +31,7 @@ namespace engine
         public const int Width = 1920;
         public const int Height = 1080;
 
-        static IntPtr hwnd;
+        public static IntPtr hwnd;
         static IntPtr hdc;
         static IntPtr memDC;
         static IntPtr dib;
@@ -40,6 +42,7 @@ namespace engine
         // public static PixArray img = new("k.png");
 
         static IntPtr bits;
+
 
         static void Main()
         {
@@ -80,6 +83,21 @@ namespace engine
                 if (sleep > 0) Thread.Sleep(sleep);
             }
         }
+        [DllImport("user32.dll")]
+        static extern IntPtr GetWindowLongPtr(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+        const int GWL_STYLE = -16;
+        const long WS_THICKFRAME = 0x00040000;
+
+        static void DisableResize(IntPtr hWnd)
+        {
+            IntPtr style = GetWindowLongPtr(hWnd, GWL_STYLE);
+            style = new IntPtr(style.ToInt64() & ~WS_THICKFRAME);
+            SetWindowLongPtr(hWnd, GWL_STYLE, style);
+        }
 
         static void CreateWindowAndBuffer()
         {
@@ -111,6 +129,44 @@ namespace engine
 
             dib = CreateDIBSection(memDC, ref bmi, 0, out bits, IntPtr.Zero, 0);
             old = SelectObject(memDC, dib);
+
+            if (scaleForbiden && !fullScreen) DisableResize(hwnd);
+            else if(fullScreen) MakeFullscreenBorderless(hwnd);
+        }
+
+        [DllImport("user32.dll")]
+        static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        [DllImport("user32.dll")]
+        static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetDesktopWindow();
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left, Top, Right, Bottom;
+        }
+        const long WS_POPUP = 0x80000000;
+        const uint SWP_FRAMECHANGED = 0x0020;
+        const uint SWP_NOZORDER = 0x0004;
+        const uint SWP_SHOWWINDOW = 0x0040;
+
+        static readonly IntPtr HWND_TOP = IntPtr.Zero;
+
+        public static void MakeFullscreenBorderless(IntPtr hWnd)
+        {
+            GetClientRect(GetDesktopWindow(), out RECT rect);
+
+            IntPtr style = GetWindowLongPtr(hWnd, GWL_STYLE);
+            style = new IntPtr((style.ToInt64() & ~0x00CF0000L) | WS_POPUP); // убираем рамки
+            SetWindowLongPtr(hWnd, GWL_STYLE, style);
+
+            SetWindowPos(hWnd, HWND_TOP, 0, 0,
+                rect.Right - rect.Left,
+                rect.Bottom - rect.Top,
+                SWP_FRAMECHANGED | SWP_NOZORDER | SWP_SHOWWINDOW);
         }
     
     }

@@ -3,9 +3,9 @@ using System;
 
 namespace engine
 {
-    class MainGameClass
+    static class MainGameClass
     {
-        protected static void Start()
+        public static void Start()
         {
             // PixArray png = new("k.png");
             // png.show();
@@ -19,9 +19,10 @@ namespace engine
             // // PixArray a = new("p1.png");
             // // a.show();
         }
-        protected static void Update()
+        public static void Update()
         {
-            Console.WriteLine(Input.IsPressed(Keys.A));
+            // Console.WriteLine(Input.IsPressed(Keys.A));
+            Console.WriteLine($"{Input.GetMousePosRel().x} {Input.GetMousePosRel().y}");
             // Bitmap 
             // // Console.WriteLine(dst[0].r);aaaaaaaa
             // for (int x = 1; x < OutputWindow.Width && x < image.Width; x++)
