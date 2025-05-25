@@ -97,10 +97,10 @@ namespace engine
                 Height = bmp.Height;
                 if (bmp.AlphaType == SKAlphaType.Unpremul) rgba = true;
                 else rgba = false;
-                bgrToRgb();
+                bgrToRgb(img);
             }
         }
-        public void bgrToRgb()
+        public static void bgrToRgb(byte[] img)
         {
             for (int i = 0, j = 0; i < img.Length; i += 4, j += 3)
             {
