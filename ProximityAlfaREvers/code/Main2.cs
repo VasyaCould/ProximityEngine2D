@@ -1,46 +1,61 @@
 using System;   
+using System.IO;
+using System.Transactions;
+// File.WriteAllText(path, text);
 
 
 namespace engine
 {
     static class MainGameClass
     {
+        public static PixArray? pic;
+        public static string pathToSaveChars = "";
+        public static string curCharName = "unknown";
         public static void Start()
         {
-            // PixArray png = new("k.png");
-            // png.show();
-            // 
-
-            // img.show();XZ
-            GameObject i = new("gmObj", "p1.png", new Vector2(0, 0), 0);
-            Console.WriteLine(CurScene.gameObjectsOnScene[0].programName);
-            // PixArray b = new("p21.png");
-            // b.show();
-            // // PixArray a = new("p1.png");
-            // // a.show();
+            Console.WriteLine("Write abs path to png or jpg");
+            while (true)
+            {
+                try { pic = new PixArray(Console.ReadLine()); break; }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("error: " + ex + "\ntry again");
+                }
+            }
+            Console.WriteLine("Write abs path where you want to save chars");
+            while (true)
+            {
+                try
+                {
+                    pathToSaveChars = Console.ReadLine();
+                    File.WriteAllText($@"{pathToSaveChars}\test.txt", "test");
+                    File.Delete($@"{pathToSaveChars}\test.txt");
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("error: " + ex + "\ntry again");
+                }
+            }
+            Console.WriteLine("Write name of cur char");
+            while (true)
+            {
+                curCharName = Console.ReadLine();
+                if (curCharName != "") break;
+                else Console.Write("try again");
+            }
+            Console.WriteLine("To change settings or pic press q (on window)\nTo draw hold left mouse button\nTo move pic hold right mouse button");
         }
         public static void Update()
         {
-            // Console.WriteLine(Input.IsPressed(Keys.A));
-            Console.WriteLine($"{Input.GetMousePosRel().x} {Input.GetMousePosRel().y}");
-            // Bitmap 
-            // // Console.WriteLine(dst[0].r);aaaaaaaa
-            // for (int x = 1; x < OutputWindow.Width && x < image.Width; x++)
-            // {
-            //     for (int y = 1; y < OutputWindow.Height && y < image.Height; y++)
-            //     {
-            //         OutputWindow.img.SetPixel(x, y, new byte[] { dst[0].R, dst[1].G, dst[2].B });
-            //     }
-            // }
-            // Console.WriteLine(new Bitmap("p21.png").GetPixel(1, 1).);
-            // Out
-            // if ()(var input = System.IO.File.OpenRead(path))
-            /*cd ProximityAlfaREvers
-            cd code
-            dotnet run*/
-            // using (var bitmap = SKBitmap.Decode(input)
-            // OutputWindow.img = new PixArray("p21.png", true);
-
+            if (Input.IsPressed(Keys.Q))
+            {
+                Settings();
+            }
+        }
+        public static void Settings()
+        {
+            Console.WriteLine("1-change path to pic 2-");
         }
     }
 }

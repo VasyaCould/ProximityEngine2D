@@ -48,46 +48,6 @@ namespace engine
             this.x = 0;
         }
     }
-    public class GameObject
-    {
-        public string programName, imgDirectory;
-        public PixArray img;
-        public short printLayer;
-        public Vector2 position;
-        public float rotation;
-        public GameComponents gameComponents;
-        public float scale;
-        public GameObject(
-            string programName,
-            string? imgDirection = null,
-            Vector2? postion = null,
-            float? rotation = null,
-            GameComponents? gameComponents = null,
-            PixArray? img = null,
-            float scale = 0,
-            short printLayer = 0
-
-            )
-        {
-            this.programName = programName;
-            this.imgDirectory = imgDirection ?? "";
-            this.scale = scale;
-            this.printLayer = printLayer;
-            if (!string.IsNullOrWhiteSpace(imgDirection))
-            {
-                img = new PixArray(imgDirection);
-                // img.ImportImg();
-                // img.refresh();
-                // img.ShowImg();
-            }
-            this.img = img ?? new PixArray();
-            this.position = position ?? new Vector2(0, 0);
-            this.rotation = rotation ?? 0;
-            this.gameComponents = gameComponents ?? new GameComponents();
-            CurScene.gameObjectsOnScene.Add(this);
-            CurScene.exsistingLayers.Add(this.printLayer);
-        }
-    }
     public class PixArray
     {
         public byte[] img = new byte[4] { 0, 0, 0, 0 };
@@ -359,42 +319,5 @@ namespace engine
     //     //pubilc static void cah
     // }
     // components
-    public class GameComponents
-    {
-        public class RigidPhysics
-        {
-            public bool enabled;
-            public class F
-            {
-                public Vector2? direction;
-                public float strenghtN;
-                public float rotationStrenghtN;
-            }
-        }
-        public class ColliderLayer
-        {
-            public int layer = 0;
-        }
-        public class EdgeCollider
-        {
-            public bool enabled;
-            public Vector2[] relPoses = new Vector2[0];
-        }
-        public class CircleCollider
-        {
-            public bool enabled;
-            public Vector2 relPos = new Vector2(0, 0);// rel relative
-            public float diameter;
-        }
-        public class PixelCollider
-        {
-
-        }
-        //class RectCollider
-        //{
-        //    public float size;
-        //    public 
-        //}
-    }
     
 }
