@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 public static class Win32
 {
+    [DllImport("user32.dll")] public static extern void PostQuitMessage(int exitCode);
     [DllImport("user32.dll")] public static extern IntPtr CreateWindowEx(int ex, string cls, string name, int style, int x, int y, int w, int h, IntPtr p, IntPtr menu, IntPtr inst, IntPtr param);
     [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr hwnd, int cmd);
     [DllImport("user32.dll")] public static extern bool UpdateWindow(IntPtr hwnd);

@@ -50,12 +50,13 @@ namespace engine
     }
     public class GameObject
     {
-        string programName, imgDirectory;
-        PixArray img;
-        Vector2 position;
-        float rotation;
-        GameComponents gameComponents;
-        float scale;
+        public string programName, imgDirectory;
+        public PixArray img;
+        public short printLayer;
+        public Vector2 position;
+        public float rotation;
+        public GameComponents gameComponents;
+        public float scale;
         public GameObject(
             string programName,
             string? imgDirection = null,
@@ -63,13 +64,15 @@ namespace engine
             float? rotation = null,
             GameComponents? gameComponents = null,
             PixArray? img = null,
-            float scale = 0
+            float scale = 0,
+            short printLayer = 0
 
             )
         {
             this.programName = programName;
             this.imgDirectory = imgDirection ?? "";
             this.scale = scale;
+            this.printLayer = printLayer;
             if (!string.IsNullOrWhiteSpace(imgDirection))
             {
                 img = new PixArray(imgDirection);
@@ -81,6 +84,8 @@ namespace engine
             this.position = position ?? new Vector2(0, 0);
             this.rotation = rotation ?? 0;
             this.gameComponents = gameComponents ?? new GameComponents();
+            CurScene.gameObjectsOnScene.Add(this);
+            CurScene.exsistingLayers.Add(this.printLayer);
         }
     }
     public class PixArray
@@ -90,7 +95,7 @@ namespace engine
         public int Width;
         public int Height;
 
-        public PixArray(){}
+        public PixArray() { }
         public PixArray(int Width, int Height, bool rgba)
         {
             img = new byte[Width * Height * (rgba ? 4 : 3)];
@@ -163,6 +168,8 @@ namespace engine
                 img[j + 3] = a;
             }
         }
+
+        [Obsolete("Этот метод устарел. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт")]
         public void show(Vector2int? pos = null, float? rotation = null)
         {
             pos = pos ?? new Vector2int(0, 0);
@@ -227,7 +234,7 @@ namespace engine
         {
             try
             {
-                return new Color (
+                return new Color(
                     img[GetIndexR(x, y)],
                     img[GetIndexG(x, y)],
                     img[GetIndexB(x, y)],
@@ -354,7 +361,7 @@ namespace engine
     // components
     public class GameComponents
     {
-        public class RigidPhysical
+        public class RigidPhysics
         {
             public bool enabled;
             public class F
@@ -363,6 +370,10 @@ namespace engine
                 public float strenghtN;
                 public float rotationStrenghtN;
             }
+        }
+        public class ColliderLayer
+        {
+            public int layer = 0;
         }
         public class EdgeCollider
         {
@@ -375,9 +386,9 @@ namespace engine
             public Vector2 relPos = new Vector2(0, 0);// rel relative
             public float diameter;
         }
-        public class PixelColider
+        public class PixelCollider
         {
-            
+
         }
         //class RectCollider
         //{
@@ -385,4 +396,5 @@ namespace engine
         //    public 
         //}
     }
+    
 }

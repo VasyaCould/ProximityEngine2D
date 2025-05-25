@@ -3,5 +3,8 @@ using System;
 
 namespace engine
 {
-    class 
+    public static class Physics
+    {
+
+    }
 }
