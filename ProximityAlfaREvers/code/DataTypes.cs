@@ -166,6 +166,53 @@ namespace engine
                 }
             }
         }
+        public void ChangeScale(int newWidth, int newHeight)// gpt
+        {
+            byte[] scaled = new byte[newWidth * newHeight * (rgba ? 4 : 3)];
+
+            float xRatio = (float)Width / newWidth;
+            float yRatio = (float)Height / newHeight;
+
+            for (int y = 0; y < newHeight; y++)
+            {
+                for (int x = 0; x < newWidth; x++)
+                {
+                    int newIndex = (y * newWidth + x) * (rgba ? 4 : 3);
+
+                    int srcX = (int)(x * xRatio);
+                    int srcY = (int)(y * yRatio);
+                    int srcIndex = (srcY * Width + srcX) * (rgba ? 4 : 3);
+
+                    for (int c = 0; c < (rgba ? 4 : 3); c++)
+                    {
+                        scaled[newIndex + c] = img[srcIndex + c];
+                    }
+                }
+            }
+
+            img = scaled;
+        }
+            // this.scale = scale ?? this.scale;
+
+            // PixArray newImage = new(Convert.ToInt32(Width * scale) + 1, Convert.ToInt32(Height * scale) + 1, rgba);
+            // for (int iW = 1; iW < Width; iW++)
+            // {
+            //     for (int iH = 1; iH < Height; iH++)
+            //     {
+            //         int newWidth = Convert.ToInt32(iW * scale);
+            //         int newHeight = Convert.ToInt32(iH * scale);
+            //         if (newWidth < newImage.Width && newHeight < newImage.Height && newWidth > 0 && newHeight > 0)
+            //         {
+            //             // Console.Write(newWidth);
+            //             // Console.Write(" ");
+            //             // Console.WriteLine(newHeight);
+            //             newImage.SetPixel(newWidth, newHeight, GetPixel(iW, iH));
+            //         }
+
+            //     }
+            // }
+            // img = newImage.img;
+        
         // public void rgbaToRgb()
         // {
         //     if (rgba)

@@ -14,6 +14,9 @@ namespace engine
             // img.show();XZ
             GameObject i = new("gmObj", "p1.png", new Vector2(0, 0), 0);
             Console.WriteLine(CurScene.gameObjectsOnScene[0].programName);
+            PixArray a = new("p1.png");
+            a.ChangeScale(a.Width / 2, a.Height / 2);
+            a.show();
             // PixArray b = new("p21.png");
             // b.show();
             // // PixArray a = new("p1.png");
@@ -22,7 +25,7 @@ namespace engine
         public static void Update()
         {
             // Console.WriteLine(Input.IsPressed(Keys.A));
-            Console.WriteLine($"{Input.GetMousePosRel().x} {Input.GetMousePosRel().y}");
+            // Console.WriteLine($"{Input.GetMousePosRel().x} {Input.GetMousePosRel().y}");
             // Bitmap 
             // // Console.WriteLine(dst[0].r);aaaaaaaa
             // for (int x = 1; x < OutputWindow.Width && x < image.Width; x++)
