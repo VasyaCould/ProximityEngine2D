@@ -56,6 +56,9 @@ namespace engine
             MSG msg;
             while (true)
             {
+                sw.Restart();
+
+                
                 MainGameClass.Update();
 
                 while (PeekMessage(out msg, IntPtr.Zero, 0, 0, 1))
@@ -69,7 +72,6 @@ namespace engine
                     }
                 }
 
-                sw.Restart();
 
 
                 // for(int i = 0; i < img.img.Length; i++)img.img[i] = ;
@@ -80,7 +82,7 @@ namespace engine
 
                 sw.Stop();
                 // int sleep = (int)(16 - sw.ElapsedMilliseconds);
-                // Console.WriteLine(sw.ElapsedMilliseconds);
+                Console.WriteLine(sw.ElapsedMilliseconds);
                 // if (sleep > 0) Thread.Sleep(sleep);
             }
         }
