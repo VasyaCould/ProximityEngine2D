@@ -79,8 +79,9 @@ namespace engine
                 BitBlt(hdc, 0, 0, Width, Height, memDC, 0, 0, 0x00CC0020); // show
 
                 sw.Stop();
-                int sleep = (int)(16 - sw.ElapsedMilliseconds);
-                if (sleep > 0) Thread.Sleep(sleep);
+                // int sleep = (int)(16 - sw.ElapsedMilliseconds);
+                // Console.WriteLine(sw.ElapsedMilliseconds);
+                // if (sleep > 0) Thread.Sleep(sleep);
             }
         }
         [DllImport("user32.dll")]

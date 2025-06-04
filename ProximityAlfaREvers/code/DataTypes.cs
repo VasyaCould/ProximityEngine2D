@@ -1,4 +1,6 @@
 using System;
+using System.IO.Compression;
+using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using SkiaSharp;
 
@@ -32,6 +34,20 @@ namespace engine
         {
             this.y = 0;
             this.x = 0;
+        }
+    }
+    public class Color
+    {
+        public byte r;
+        public byte g;
+        public byte b;
+        public byte a;
+        public Color(byte r, byte g, byte b, byte? a = null)
+        {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a ?? (byte)255;
         }
     }
     public class PixArray
@@ -115,16 +131,16 @@ namespace engine
             }
         }
 
-        [Obsolete("Этот метод устарел. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт")]
+        [Obsolete("Этот метод устарел. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт и быть перекрытым")]
         public void show(Vector2int? pos = null, float? rotation = null, bool? fill = null)
         {
-            if(fill == true) Array.Fill<byte>(OutputWindow.img.img, 255);
+            if (fill == true) Array.Fill<byte>(OutputWindow.img.img, 255);
             pos = pos ?? new Vector2int(0, 0);
             for (int x = 1; x + pos.x < OutputWindow.Width && x < this.Width; x++)
             {
                 for (int y = 1; y + pos.y < OutputWindow.Height && y < this.Height; y++)
                 {
-                    if(x + pos.x > 0 && y + pos.y > 0) OutputWindow.img.SetPixel(x + pos.x, y + pos.y, this.GetPixel(x, y));
+                    if (x + pos.x > 0 && y + pos.y > 0) OutputWindow.img.SetPixel(x + pos.x, y + pos.y, this.GetPixel(x, y));
                 }
             }
         }
@@ -147,20 +163,59 @@ namespace engine
         //         newImg = null; //just clearing memory (i know that c# clears memory automatically
         //     }
         // }
-        public class Color
+        public void DrawLine(Vector2int firstPoint, Vector2int endPoint, Color color)
         {
-            public byte r;
-            public byte g;
-            public byte b;
-            public byte a;
-            public Color(byte r, byte g, byte b, byte? a = null)
+            int x = endPoint.x - firstPoint.x;
+            int y = endPoint.y - firstPoint.y;
+            bool xLess = Math.Abs(x) < Math.Abs(y) ? true : false;
+            int steps = xLess ? Math.Abs(y) : Math.Abs(x);
+            int steps2 = xLess ? x : y;
+            for (int i = 0; i < steps; i++)
             {
-                this.r = r;
-                this.g = g;
-                this.b = b;
-                this.a = a ?? (byte)255;
+                if (xLess)
+                {
+                    if (y < 0) firstPoint.y--;
+                    else firstPoint.y++;
+                }
+                else
+                {
+                    if (x < 0) firstPoint.x--;
+                    else firstPoint.x++;
+                }
+                if(steps2 != 0 && steps / steps2 != 0 && i % (steps / steps2) == 0)//steps2 != 0) if (i % (steps2 / steps) == 0)
+                {
+                    if (xLess)
+                    {
+                        if (x < 0) firstPoint.x--;
+                        else firstPoint.x++;
+                    }
+                    else
+                    {
+                        if (y < 0) firstPoint.y--;
+                        else firstPoint.y++;
+                    }
+                }
+                if(firstPoint.x < OutputWindow.Width && firstPoint.x > 0 && firstPoint.y < OutputWindow.Height && firstPoint.y > 0) this.SetPixel(firstPoint.x, firstPoint.y, color);
             }
+            // int x = endPoint.x - firstPoint.x;
+            // int y = endPoint.y - firstPoint.y;
+            // bool xLess = Math.Abs(x) < Math.Abs(y) ? true : false;
+            // int steps = xLess ? y : x;
+            // int steps2 = xLess ? x : y;
+            // for (int i = 0; i < steps; i++)
+            // {
+                
+            //     if (xLess) this.SetPixel(firstPoint.x, firstPoint.y++, color);
+            //     else this.SetPixel(firstPoint.x++, firstPoint.y, color);
+            //     if (i % (steps / steps2) == 0)//steps2 != 0) if (i % (steps2 / steps) == 0)
+            //     {
+            //         if (xLess) this.SetPixel(firstPoint.x++, firstPoint.y, color);
+            //         else this.SetPixel(firstPoint.x, firstPoint.y++, color);
+            //     }
+
+            // }
         }
+
         public int GetIndexR(int x, int y)
         {
             return (x + Width * (y - 1)) * (rgba ? 4 : 3) - 1;

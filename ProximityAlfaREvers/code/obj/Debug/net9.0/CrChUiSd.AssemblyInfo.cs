@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CrChUiSd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+781b64284d2dc0d3fc4aad94785a213bf5c619fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af8d3626591ef61238e4654e42d28044cc035930")]
 [assembly: System.Reflection.AssemblyProductAttribute("CrChUiSd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrChUiSd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
