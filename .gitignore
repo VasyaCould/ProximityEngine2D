@@ -1,0 +1,49 @@
+# Скомпилированные бинарники
+/bin/
+/obj/
+
+# VS Code
+.vscode/
+
+# Настройки и секреты
+appsettings.Development.json
+secrets.json
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.bak
+
+# Кэш и системные файлы
+.DS_Store
+Thumbs.db
+CrChUiSd.dll
+CrChUiSd.dll
+CrChUiSd.sourcelink.json
+CrChUiSd.pdb
+CrChUiSd.dll
+CrChUiSd.AssemblyInfoInputs.cache
+CrChUiSd.AssemblyInfo.cs
+apphost.exe
+CrChUiSd.pdb
+CrChUiSd.exe
+CrChUiSd.dll
+ProximityAlfaREvers/code/obj/project.nuget.cache
+ProximityAlfaREvers/code/obj/project.nuget.cache
+ProximityAlfaREvers/code/obj/project.nuget.cache
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.GeneratedMSBuildEditorConfig.editorconfig
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.assets.cache
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.AssemblyInfoInputs.cache
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.AssemblyInfo.cs
+ProximityAlfaREvers/code/obj/CrChUiSd.csproj.nuget.dgspec.json
+ProximityAlfaREvers/code/bin/Debug/net9.0/CrChUiSd.dll
+ProximityAlfaREvers/code/bin/Debug/net9.0/CrChUiSd.exe
+ProximityAlfaREvers/code/bin/Debug/net9.0/CrChUiSd.pdb
+ProximityAlfaREvers/code/obj/Debug/net9.0/apphost.exe
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.AssemblyInfo.cs
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.AssemblyInfoInputs.cache
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.dll
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.pdb
+ProximityAlfaREvers/code/obj/Debug/net9.0/CrChUiSd.sourcelink.json
+ProximityAlfaREvers/code/obj/Debug/net9.0/ref/CrChUiSd.dll
+ProximityAlfaREvers/code/obj/Debug/net9.0/refint/CrChUiSd.dll

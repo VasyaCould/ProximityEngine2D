@@ -49,6 +49,14 @@ namespace engine
             this.b = b;
             this.a = a ?? (byte)255;
         }
+        public void Merge(Color secondColor)
+        {
+            // i will do it after
+            this.r = (byte)((this.r * this.a + secondColor.r * secondColor.a) / 510);
+            this.g = (byte)((this.g * this.a + secondColor.g * secondColor.a) / 510);
+            this.b = (byte)((this.b * this.a + secondColor.b * secondColor.a) / 510);
+            this.a = (byte)(this.a + secondColor.a);
+        }
     }
     public class PixArray
     {
@@ -131,8 +139,8 @@ namespace engine
             }
         }
 
-        [Obsolete("Этот метод устарел. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт и быть перекрытым")]
-        public void show(Vector2int? pos = null, float? rotation = null, bool? fill = null)
+        [Obsolete("Этот метод устарел, он занимает ~100мс. Он выводит текущий pixArray на экран напрямую заменяя его пиксели (возможно) без учета прозрачности, может быть перекрыт и быть перекрытым")]
+        public void Show(Vector2int? pos = null, float? rotation = null, bool? fill = null)
         {
             if (fill == true) Array.Fill<byte>(OutputWindow.img.img, 255);
             pos = pos ?? new Vector2int(0, 0);
@@ -141,6 +149,34 @@ namespace engine
                 for (int y = 1; y + pos.y < OutputWindow.Height && y < this.Height; y++)
                 {
                     if (x + pos.x > 0 && y + pos.y > 0) OutputWindow.img.SetPixel(x + pos.x, y + pos.y, this.GetPixel(x, y));
+                }
+            }
+        }
+        /// <summary>
+        /// You can use just RGB, not RGBA!!!
+        /// </summary>
+        /// <param name="imgToMerge"></param>
+        /// <param name="imgPos"></param>
+        public void Merge(PixArray imgToMerge, Vector2int? imgPos = null)
+        {
+            imgPos = imgPos ?? new();
+
+            int imgToMergeLayer = imgToMerge.Width * 3;
+            int thisImgLayer = this.Width * 3;
+            int elsToSkipX = 3 * imgPos.x;
+            int numOfEls = imgToMergeLayer < thisImgLayer ? imgToMergeLayer : thisImgLayer;
+            if (elsToSkipX + numOfEls > thisImgLayer) numOfEls = thisImgLayer - elsToSkipX;
+
+
+            if (elsToSkipX >= 0) for (int i = imgPos.y; i - imgPos.y < imgToMerge.Height && i < this.Height; i++)
+                {
+                    Array.Copy(imgToMerge.img, (i - imgPos.y) * imgToMergeLayer, this.img, i * thisImgLayer + elsToSkipX, numOfEls);
+                }
+            else
+            {
+                if(elsToSkipX * -1 < imgToMergeLayer) for (int i = 0; i - imgPos.y < imgToMerge.Height && i < this.Height; i++)
+                {
+                    Array.Copy(imgToMerge.img, (i - imgPos.y) * imgToMergeLayer - elsToSkipX, this.img, i * thisImgLayer, numOfEls + elsToSkipX);
                 }
             }
         }
